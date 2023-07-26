@@ -1,0 +1,66 @@
+with cte as (select distinct id from trip)
+
+with cte1 as(select customerid, count(TripID) tripcount from trip where ToLocation = "Airport" group by customerid)
+select  from trip join 
+
+
+CustomerId, TripId, TripDate, FromLocation, ToLocation, DistanceInKms
+
+1, 1, â€˜2021-01-01â€™, â€˜Homeâ€™, â€˜Airportâ€™, 20
+
+1, 2, â€˜2021-02-01â€™, â€˜CafÃ©â€™, â€˜Officeâ€™, 30
+
+1, 3, â€˜2021-03-01â€™, â€˜Officeâ€™, â€˜Airportâ€™, 40
+
+2, 1, 2021-01-03â€™, â€˜Baristaâ€™, â€˜Airportâ€™, 50
+
+
+1  3    1
+2  1    2
+        3
+
+select cte.id, cte1.tripcount from cte left join cte1 on cte.id = cte1.id
+
+
+
+python:
+
+final_output = {}
+fh = open(file,"r")
+customers = set()
+for i in fh:
+    a = i.split(",")
+    customers.add(a[0])
+sum = 0
+for j in customers:
+   for k in fh:
+       lst = k.split(",")
+       if lst[4] == "Airport":
+          sum = sum+1
+   final_output[j] = sum
+print(final_output)
+
+
+
+pyspark:
+
+
+df1 = spark.read.csv("filename",header = true)
+df2 = df1.filter(df.FromLocation == "Airport").groupby(df.CustomerId).agg(df.TripId.count().alias("TripCount))
+
+
+df3 = df1.select(df.CustomerId).distinct()
+
+df4 = df3.leftjoin(df2, df2.CustomerId = df3.CustomerId)
+
+df4.show()
+
+
+
+   
+    
+
+
+
+      
+
