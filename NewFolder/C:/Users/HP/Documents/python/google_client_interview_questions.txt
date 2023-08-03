@@ -1,0 +1,142 @@
+table1 : ipl_team
+
+team_name,player_name
+mumbai,bumarah
+mumbai,rohith sharma
+
+
+table 2 : match_info
+
+date, team_name,player_name,run, wickets
+xyz,csk,dhoni,50,0
+xyz,csk,dhoni,101,0
+xyz,csk,jadeja,50,0
+
+Team, Players played, Not played, Unutilized %
+order by unutilized % desc
+
+with total_count as(select team_name,count(player_name) total_count from ipl_team group by team_name)
+with played_count as(select team_name,count(distinct player_name) played_count from match_info group by team_name)
+
+with final as ( select  a.* from total_count a
+
+
+
+
+
+
+date, team_name,player_name,run, wickets
+xyz,csk,dhoni,50,0,1
+xyz,csk,dhoni,101,0,0
+xyz,csk,jadeja,50,0,1
+
+with score_status as (select distinct team_name,player_name,case when run <100 then 1 else 0 end as status from match_info)
+
+select 
+
+
+date
+
+
+distance
+day, agg_kilometers
+day1 10 km         10
+day2 30 km         20
+day3 50 km         20
+
+select day, agg_kilometers
+
+
+dataset: empid,date
+    1,jan-2021
+    1,jan-2022
+    2,2018
+
+
+
+
+temp as (select  empid, max(date) MAX, min(date) MIN from dataset group by empid)
+
+
+select empid, case when MAX == MIN Then date_diff(day,MAX,now()) END AS COMPLETED_YEARS from temp 
+
+
+
+
+
+
+Team1	Team2	winner
+India	SL	India
+SL	Aus	Aus
+SA	Eng	Eng
+Eng	NZ	NZ
+Aus	India	India
+
+
+India  Aus India
+
+
+
+select  a.Team1,b.Team2,  a.winner   from matches a join matches b on a.Team1== b.Team2
+
+
+
+Output:
+
+ 
+
+team	played	wins	losses
+India	2	2	0
+Aus	2	1	1
+Eng	2	1	1
+NZ	1	1	0
+SL	2	0	2
+SA	1	0	1
+
+
+
+
+
+
+
+swiggy product
+
+
+
+
+customer_location
+cust_id,cust_name,location,date1,date2
+1,x,hyd,1-jan-2021,31-dec-2022
+1,x,Banglore,1-jan-2023,null
+
+order
+order_id, cust_id,sales,amount,order_date
+1,1,2,100,xyz
+2,1,
+
+
+order yearly, location wise sum(amount)
+
+
+select  from customer_location a join order b on a.cust_id == b.cust_id and b.orderdate between a.date1 and NVL(a.date2,a.date1)
+
+
+with sales as (select year(order_date) YEAR , sum(amount) total from order group by year(order_date))
+
+
+
+
+
+
+
+
+
+
+
+
+        	   
+
+ 
+
+
+
